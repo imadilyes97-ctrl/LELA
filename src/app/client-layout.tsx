@@ -4,21 +4,23 @@ import { useState, useCallback } from "react";
 import { VideoIntro } from "@/components/intro/video-intro";
 
 export function ClientLayout({ children }: { children: React.ReactNode }) {
-  const [introFinished, setIntroFinished] = useState(false);
+  const [showContent, setShowContent] = useState(false);
 
   const handleIntroFinish = useCallback(() => {
-    setIntroFinished(true);
+    setShowContent(true);
   }, []);
 
   return (
     <>
-      {/* Video Intro — shows before main content */}
-      {!introFinished && <VideoIntro onFinish={handleIntroFinish} />}
+      {/* Intégration vidéo — toujours montée, visible ou non */}
+      <VideoIntro onFinish={handleIntroFinish} />
 
-      {/* Main content — fades in after intro */}
+      {/* Contenu principal — invisible tant que l'intro n'a pas fini */}
       <div
-        className={`flex-1 flex flex-col transition-opacity duration-1000 ${
-          introFinished ? "opacity-100" : "opacity-0"
+        className={`flex-1 flex flex-col transition-all duration-1000 ${
+          showContent
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-4 pointer-events-none overflow-hidden"
         }`}
       >
         {children}
