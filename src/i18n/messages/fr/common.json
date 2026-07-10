@@ -1,0 +1,33 @@
+{
+  "site": {
+    "name": "LELLA",
+    "tagline": "La plateforme des événements familiaux en Algérie"
+  },
+  "nav": {
+    "prestataires": "Prestataires",
+    "inspiration": "Inspiration",
+    "commentCaMarche": "Comment ça marche",
+    "connexion": "Connexion",
+    "inscription": "Inscription"
+  },
+  "hero": {
+    "badge": "La référence des événements familiaux en Algérie",
+    "title": "Chaque grand moment mérite une célébration à la hauteur",
+    "subtitle": "Trouvez les meilleurs prestataires pour votre mariage algérien — de la Khotba à la nuit du Henné, du Chouar au Jour J.",
+    "searchPlaceholder": "Que cherchez-vous ? Traiteur, photographe, salle des fêtes...",
+    "searchButton": "Rechercher"
+  },
+  "footer": {
+    "description": "La plateforme qui transforme chaque grand moment de la famille algérienne en une expérience inoubliable.",
+    "prestataires": "Prestataires",
+    "aPropos": "À propos",
+    "pourPrestataires": "Pour les prestataires",
+    "blog": "Blog & Inspiration",
+    "contact": "Contact",
+    "suivezNous": "Suivez-nous",
+    "droits": "Tous droits réservés.",
+    "cgu": "CGU",
+    "confidentialite": "Confidentialité",
+    "mentionsLegales": "Mentions légales"
+  }
+}
