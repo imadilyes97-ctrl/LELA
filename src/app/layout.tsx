@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter, Noto_Naskh_Arabic } from "next/font/google";
 import "./globals.css";
+import { ClientLayout } from "./client-layout";
 
 const playfair = Playfair_Display({
   variable: "--font-display",
@@ -49,8 +50,10 @@ export default function RootLayout({
       dir="ltr"
       className={`${playfair.variable} ${inter.variable} ${notoNaskh.variable} h-full scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col font-body text-navy-700 bg-ivory-50 antialiased selection:bg-terracotta-200 selection:text-navy-900">
-        {children}
+      <body className="min-h-full flex flex-col font-body text-navy-700 bg-ivory-50 antialiased selection:bg-terracotta-500 selection:text-ivory-50">
+        <ClientLayout>
+          {children}
+        </ClientLayout>
       </body>
     </html>
   );

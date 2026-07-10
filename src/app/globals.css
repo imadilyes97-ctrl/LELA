@@ -1,11 +1,21 @@
 @import "tailwindcss";
 @config "../../tailwind.config.ts";
 
-/* === LELLA Design Tokens === */
+/* === LELLA Design Tokens v2 === */
 @theme inline {
   --font-display: var(--font-display);
   --font-body: var(--font-body);
   --font-arabic: var(--font-arabic);
+
+  /* Animation delays */
+  --delay-100: 100ms;
+  --delay-200: 200ms;
+  --delay-300: 300ms;
+  --delay-400: 400ms;
+  --delay-500: 500ms;
+  --delay-600: 600ms;
+  --delay-700: 700ms;
+  --delay-800: 800ms;
 }
 
 /* === Base Styles === */
@@ -17,12 +27,13 @@
 
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 6rem;
   }
 
   body {
     background-color: #FDF8F0;
     color: #1A2332;
+    overflow-x: hidden;
   }
 
   /* Focus ring accessible */
@@ -40,20 +51,88 @@
     background: #F5EDE0;
   }
   ::-webkit-scrollbar-thumb {
-    background: #D5CDBF;
+    background: linear-gradient(180deg, #C8674A, #C9A84C);
     border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #B8B0A2;
+    background: linear-gradient(180deg, #A34D32, #A8882E);
   }
 }
 
-/* === Animations === */
-@layer utilities {
-  .animate-stagger-1 { animation-delay: 0.1s; }
-  .animate-stagger-2 { animation-delay: 0.2s; }
-  .animate-stagger-3 { animation-delay: 0.3s; }
-  .animate-stagger-4 { animation-delay: 0.4s; }
-  .animate-stagger-5 { animation-delay: 0.5s; }
-  .animate-stagger-6 { animation-delay: 0.6s; }
+/* === Smooth reveal on scroll — used by motion.div with whileInView === */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === Glassmorphism Utilities === */
+.glass-light {
+  background: rgba(253, 248, 240, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(245, 237, 224, 0.5);
+}
+
+.glass-dark {
+  background: rgba(26, 35, 50, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-premium {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* === Gradient text === */
+.gradient-text {
+  background: linear-gradient(135deg, #C8674A, #C9A84C);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-gold {
+  background: linear-gradient(135deg, #C9A84C, #E0B84D);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-warm {
+  background: linear-gradient(135deg, #C8674A, #E88D5F, #C9A84C);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* === Noisy texture overlay === */
+.noise-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* === Prevent layout shift from scrollbar === */
+html {
+  scrollbar-gutter: stable;
+}
+
+/* === Selection style === */
+::selection {
+  background-color: #C8674A;
+  color: #FFFCF8;
 }
